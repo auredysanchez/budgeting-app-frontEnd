@@ -1,23 +1,30 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { Link, useParams, useHistory, withRouter } from "react-router-dom";
+import TransactionListItem from "./TransactionListItem";
+import React from "react";
 
-import { apiURL } from "../util/apiURL";
-const API = apiURL();
-
-function TransactionDetails({ deleteTransaction }) {
-  const [transaction, setTransaction] = useState({});
-  let { index } = useParams();
-  let history = useHistory();
-
+function Transactions({ transactions }) {
   return (
     <div>
-      <p>Name: {transaction.name}</p>
-      <p>Amount: ${transaction.amount}</p>
-      <p>From: {transaction.from}</p>
-      <p>Date: {transaction.date}</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Take me there</th>
+            <th>See this TransactionList</th>
+          </tr>
+        </thead>
+        <tbody>
+          {transactions.map((transactionListItem, index) => {
+            return (
+              <TransactionListItem
+                key={index}
+                transactionListItem={transactionListItem}
+                index={index}
+              />
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
 
-export default withRouter(Transactions);
+export default Transactions;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 
-function Transaction({ transaction, index }) {
+function TransactionListItem({ transaction, index }) {
   return (
     <tr>
       <td>
@@ -17,4 +17,4 @@ function Transaction({ transaction, index }) {
   );
 }
 
-export default Transaction;
+export default TransactionListItem;
